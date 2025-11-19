@@ -1,0 +1,33 @@
+const gridContainer = document.querySelector(".grid-container");
+const clearButton = document.querySelector(".clear-button");
+let gridSize = 16;
+
+/* ***Main*** */
+createGrid(gridSize);
+clearButton.addEventListener('click', clearGrid);
+
+function createGrid(gridSize) {
+  for (let rowCount = 0; rowCount < gridSize; rowCount++) {
+    let gridRow = document.createElement("div");
+    gridRow.classList.add("grid-row");
+    gridContainer.appendChild(gridRow);
+    for (let columnCount = 0; columnCount < gridSize; columnCount++) {
+      let square = document.createElement("div");
+      square.classList.add("square");
+      square.addEventListener('mouseenter', colorSquare);
+      gridRow.appendChild(square);
+    }
+  }
+}
+
+function colorSquare(event) {
+  let r = Math.floor(Math.random() * 256);
+  let g = Math.floor(Math.random() * 256);
+  let b = Math.floor(Math.random() * 256);
+  event.target.style.backgroundColor = `rgb(${r}, ${g}, ${b})`;
+}
+
+function clearGrid() {
+  const squares = document.querySelectorAll(".square");
+  squares.forEach(square => square.style.backgroundColor = "white");
+}
