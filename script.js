@@ -1,10 +1,12 @@
 const gridContainer = document.querySelector(".grid-container");
 const clearButton = document.querySelector(".clear-button");
+const newGridButton = document.querySelector(".new-grid-button");
 let gridSize = 16;
 
 /* ***Main*** */
 createGrid(gridSize);
 clearButton.addEventListener('click', clearGrid);
+newGridButton.addEventListener('click', newGrid);
 
 function createGrid(gridSize) {
   for (let rowCount = 0; rowCount < gridSize; rowCount++) {
@@ -30,4 +32,23 @@ function colorSquare(event) {
 function clearGrid() {
   const squares = document.querySelectorAll(".square");
   squares.forEach(square => square.style.backgroundColor = "white");
+}
+
+function deleteGrid() {
+  const squares = document.querySelectorAll(".square");
+  squares.forEach(square => square.remove());
+  const rows = document.querySelectorAll(".grid-row");
+  rows.forEach(row => row.remove());
+}
+
+function newGrid() {
+  let newSize = 0;
+  do {
+    newSize = prompt("Enter a new length between 1 and 100: ");
+  } while (newSize < 1 || newSize > 100);
+
+  gridSize = newSize;
+
+  deleteGrid();
+  createGrid(gridSize);
 }
