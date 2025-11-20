@@ -41,7 +41,7 @@ body {
 }
 
 .button-container {
-  margin-top: 30px;
+  margin-bottom: 30px;
   display: flex;
   gap: 20px;
 }

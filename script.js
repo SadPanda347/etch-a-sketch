@@ -22,14 +22,6 @@ function createGrid(gridSize) {
   }
 }
 
-function colorSquare(event) {
-  let r = Math.floor(Math.random() * 256);
-  let g = Math.floor(Math.random() * 256);
-  let b = Math.floor(Math.random() * 256);
-  event.target.style.backgroundColor = `rgb(${r}, ${g}, ${b})`;
-  incrementOpacity(event);
-}
-
 function clearGrid() {
   const squares = document.querySelectorAll(".square");
   squares.forEach(square => square.style.backgroundColor = "white");
@@ -54,8 +46,21 @@ function newGrid() {
   createGrid(gridSize);
 }
 
-function incrementOpacity(event) {
-  if (event.target.style.opacity < 1) {
-    event.target.style.opacity = `${Number(event.target.style.opacity) + .1}`
+function getRgbValue() {
+  return Math.floor(Math.random() * 256);
+}
+
+function colorSquare(event) {
+  let r = getRgbValue();
+  let g = getRgbValue();
+  let b = getRgbValue();
+
+  event.target.style.backgroundColor = `rgb(${r}, ${g}, ${b})`;
+  incrementOpacity(event.target);
+}
+
+function incrementOpacity(square) {
+  if (square.style.opacity < 1) {
+    square.style.opacity = `${Number(square.style.opacity) + .1}`
   }
 }
