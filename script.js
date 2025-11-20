@@ -27,6 +27,7 @@ function colorSquare(event) {
   let g = Math.floor(Math.random() * 256);
   let b = Math.floor(Math.random() * 256);
   event.target.style.backgroundColor = `rgb(${r}, ${g}, ${b})`;
+  incrementOpacity(event);
 }
 
 function clearGrid() {
@@ -51,4 +52,10 @@ function newGrid() {
 
   deleteGrid();
   createGrid(gridSize);
+}
+
+function incrementOpacity(event) {
+  if (event.target.style.opacity < 1) {
+    event.target.style.opacity = `${Number(event.target.style.opacity) + .1}`
+  }
 }
