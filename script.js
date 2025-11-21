@@ -1,12 +1,12 @@
 const gridContainer = document.querySelector(".grid-container");
 const clearButton = document.querySelector(".clear-button");
-const newGridButton = document.querySelector(".new-grid-button");
+const newButton = document.querySelector(".new-button");
 let gridSize = 16;
 
 /* ***Main*** */
 createGrid(gridSize);
 clearButton.addEventListener('click', clearGrid);
-newGridButton.addEventListener('click', newGrid);
+newButton.addEventListener('click', newGrid);
 
 function createGrid(gridSize) {
   for (let rowCount = 0; rowCount < gridSize; rowCount++) {
@@ -37,13 +37,11 @@ function deleteGrid() {
 function newGrid() {
   let newSize = 0;
   do {
-    newSize = prompt("Enter a new length between 1 and 100: ");
+    newSize = prompt("Enter a length between 1 and 100: ");
   } while (newSize < 1 || newSize > 100);
 
-  gridSize = newSize;
-
   deleteGrid();
-  createGrid(gridSize);
+  createGrid(newSize);
 }
 
 function getRgbValue() {
